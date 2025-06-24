@@ -10,5 +10,4 @@ This often involves sentence splitting, chunk grouping, and embedding generation
 Vector databases store these chunks for fast retrieval using semantic similarity.
 """
 
-print(paragraph.split(/n))
 print(re.split(r'(?<=[.!?])+',paragraph.strip()))

@@ -9,15 +9,18 @@ Before passing documents to a model, they must be split into manageable chunks.
 This often involves sentence splitting, chunk grouping, and embedding generation. 
 Vector databases store these chunks for fast retrieval using semantic similarity.
 """
-
+sentences = re.split(r"(?<=[.?!])+", paragraph.strip())
+chunk_size = 1
+chunks = [' '.join(sentences[i:i+chunk_size]) for i in range(0, len(sentences), chunk_size)] 
+for i, chunk in enumerate(chunks):
+    print(f"chunk {i+1}:\n{chunks}\n")
 # Step 1: Split paragraph into sentences
 sentences = re.split(r'(?<=[.!?]) +', paragraph.strip())
 
 # Step 2: Group into chunks of 3 sentences
 chunk_size = 1
-for i in range(0, len(sentences),chunk_size):
-    chunks = ' '.join(sentences[i:i+chunk_size])
-#chunks = [' '.join(sentences[i:i+chunk_size]) for i in range(0, len(sentences), chunk_size)]
+
+chunks = [' '.join(sentences[i:i+chunk_size]) for i in range(0, len(sentences), chunk_size)]
 print(chunks)
 print("List of Chunks:\n")
 for i, chunk in enumerate(chunks):
